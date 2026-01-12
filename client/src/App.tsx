@@ -1,33 +1,17 @@
-import { useEffect, useState } from "react";
-
-type Game = {
-  _id?: string;
-  title: string;
-  platform?: string;
-  region?: string;
-  price: number;
-  currency?: string;
-  discount_percent?: number;
-  cashback?: number;
-  likes?: number;
-};
+import { useEffect } from "react";
+import { useListContext } from "./context/useListContext";
+import type { Game } from "./types/ListTypes";
 
 const App = () => {
-  const [games, setGames] = useState<Game[]>([]);
+  const { state, getList } = useListContext();
 
   useEffect(() => {
-    fetch("/api/list")
-      .then((res) => res.json())
-      .then((data) => {
-        setGames(data);
-        console.log(data);
-      })
-      .catch((err) => console.error("Error fetching games:", err));
+    getList();
   }, []);
 
   return (
     <div>
-      {games.map((game) => (
+      {state.list.map((game: Game) => (
         <div key={game._id}>
           <h2>{game.title}</h2>
           <p>Platform: {game.platform}</p>
