@@ -1,12 +1,16 @@
-import express from 'express';
-import 'dotenv/config';
-import cors from 'cors';
+import express from "express";
+import "dotenv/config";
+import cors from "cors";
+
+import listRoute from "./src/routes/listRoute.js";
 
 const PORT = process.env.SERVER_PORT || 5501;
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+app.use("/list", listRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
