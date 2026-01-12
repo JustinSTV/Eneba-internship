@@ -17,7 +17,7 @@ export const connectToDatabase = async () => {
     await client.connect();
     console.log("Connected to MongoDB");
 
-    dbInstance = client.db("eneba-internship");
+    dbInstance = client.db("eneba");
 
     gamesCollection = dbInstance.collection("games");
 
