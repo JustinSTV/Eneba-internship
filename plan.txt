@@ -1,0 +1,25 @@
+Requirements of the assignment:
+
+AI Prompt history must be submitted along with the assignment - to be clear, we encourage you to use AI and we want to understand how you utilize it.
+
+Solution must be self-hosted and available via a public URL (use free tier services)
+
+As an alternative, a publicly available git repository along with instructions for running the app locally (e.g.: “npm install && npm run start” is the level of simplicity this alternative requires) is acceptable.
+
+Please implement a Web application with search, which would match design in the attached screenshot.
+
+Web application requirements:
+
+At least 3 games for content: fifa 23, red dead redemption 2, split fiction. If you have more, please let us know with the submission
+
+React for frontend
+
+Any type of backend is fine, though we’d prefer php/go/nodejs.
+
+Available public APIs:
+
+/list
+
+/list?search=<gamename> (ability to fuzzy search is preferred)
+
+Any type of sql database (decide on the data needs based on the given screenshot)
