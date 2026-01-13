@@ -12,7 +12,7 @@ export const ListProvider = ({ children }: ChildProps) => {
     try {
       dispatch({ type: "GET_LIST_START" });
 
-      const res = await fetch("/api");
+      const res = await fetch("/api/list");
 
       const data = await res.json();
 
@@ -32,7 +32,7 @@ export const ListProvider = ({ children }: ChildProps) => {
     try {
       dispatch({ type: "GET_LIST_START" });
 
-      const res = await fetch(`/api/search?search=${query}`);
+      const res = await fetch(`/api/list?search=${query}`);
       const data = await res.json();
 
       dispatch({ type: "GET_LIST_SUCCESS", payload: data });

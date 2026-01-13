@@ -1,30 +1,19 @@
 import { Router } from "express";
 
-import { connectToDatabase, gamesCollection } from "../config/dbConfig.js";
+import { gamesCollection } from "../config/dbConfig.js";
 
 const router = Router();
 
 router.get("/", async (req, res) => {
   try {
-    const lists = await gamesCollection.find({}).toArray();
-    res.json(lists);
-  } catch (error) {
-    console.error("Error fetching lists:", error);
-    res.status(500).json({ error: "Failed to fetch lists" });
-  }
-});
-router.get("/search", async (req, res) => {
-  try {
     const { search } = req.query;
+    let query = {};
 
-    if (!search) {
-      const allLists = await gamesCollection.find({}).toArray();
-      return res.json(allLists);
+    if (search) {
+      query = { title: { $regex: search, $options: "i" } };
     }
 
-    const lists = await gamesCollection.find({
-      title: { $regex: search, $options: "i" },
-    }).toArray();
+    const lists = await gamesCollection.find(query).toArray();
     res.json(lists);
   } catch (error) {
     console.error("Error fetching lists:", error);
