@@ -12,7 +12,7 @@ export const ListProvider = ({ children }: ChildProps) => {
     try {
       dispatch({ type: "GET_LIST_START" });
 
-      const res = await fetch("/api/list");
+      const res = await fetch("/api");
 
       const data = await res.json();
 
@@ -22,16 +22,11 @@ export const ListProvider = ({ children }: ChildProps) => {
     } catch (error) {
       dispatch({
         type: "GET_LIST_FAILURE",
-        payload:
-          error instanceof Error ? error.message : "Failed to fetch list",
+        payload: error instanceof Error ? error.message : "Failed to fetch list",
       });
       return false;
     }
   };
 
-  return (
-    <ListContext.Provider value={{ state, getList }}>
-      {children}
-    </ListContext.Provider>
-  );
+  return <ListContext.Provider value={{ state, getList }}>{children}</ListContext.Provider>;
 };

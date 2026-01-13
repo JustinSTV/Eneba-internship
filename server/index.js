@@ -3,6 +3,7 @@ import "dotenv/config";
 import cors from "cors";
 
 import listRoute from "./src/routes/listRoute.js";
+import { connectToDatabase } from "./src/config/dbConfig.js";
 
 const PORT = process.env.SERVER_PORT || 5501;
 const app = express();
@@ -10,8 +11,19 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/list", listRoute);
+app.use("/", listRoute);
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+const startServer = async () => {
+  try {
+    await connectToDatabase();
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error("Failed to connect to database", error);
+    process.exit(1);
+  }
+};
+
+
+startServer();
