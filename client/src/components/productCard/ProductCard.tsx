@@ -34,14 +34,14 @@ const Card = styled.article`
       font-size: 0.85rem;
       color: #10b981;
       font-weight: 700;
-      margin-bottom: 12px;
+      margin-bottom: 15px;
       text-transform: uppercase;
     }
     div.card-price {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 8px;
+      column-gap: 8px;
       margin-top: auto;
 
       .from-label {
