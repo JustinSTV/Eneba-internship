@@ -4,7 +4,8 @@ import { useListContext } from "./context/useListContext";
 
 import type { Game } from "./types/ListTypes";
 
-import ProductCard from "./components/ProductCard";
+import ProductCard from "./components/productCard/ProductCard.tsx";
+import Header from "./components/header/Header.tsx";
 
 const Container = styled.main`
   max-width: 1200px;
@@ -32,9 +33,7 @@ const App = () => {
 
   return (
     <Container>
-      <header>
-        <h1>Game List</h1>
-      </header>
+      <Header />
       <div className="card-grid">
         {state.list.map((game: Game) => (
           <ProductCard key={game._id} game={game} />

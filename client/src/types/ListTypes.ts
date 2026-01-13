@@ -13,6 +13,7 @@ export type Game = {
   discount_percent?: number;
   cashback?: number;
   likes?: number;
+  image_url: string;
 };
 
 export type ListState = {
