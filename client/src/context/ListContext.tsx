@@ -28,5 +28,26 @@ export const ListProvider = ({ children }: ChildProps) => {
     }
   };
 
-  return <ListContext.Provider value={{ state, getList }}>{children}</ListContext.Provider>;
+  const searchList = async (query: string) => {
+    try {
+      dispatch({ type: "GET_LIST_START" });
+
+      const res = await fetch(`/api/search?search=${query}`);
+      const data = await res.json();
+
+      dispatch({ type: "GET_LIST_SUCCESS", payload: data });
+
+      return true;
+    } catch (error) {
+      dispatch({
+        type: "GET_LIST_FAILURE",
+        payload: error instanceof Error ? error.message : "Failed to fetch list",
+      });
+    }
+    return false;
+  };
+
+  return (
+    <ListContext.Provider value={{ state, getList, searchList }}>{children}</ListContext.Provider>
+  );
 };

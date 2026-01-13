@@ -1,6 +1,7 @@
 export type ListContextType = {
   state: ListState;
   getList: () => Promise<boolean>;
+  searchList: (query: string) => Promise<boolean>;
 };
 
 export type Game = {

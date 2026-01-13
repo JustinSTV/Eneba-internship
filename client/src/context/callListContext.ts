@@ -1,6 +1,4 @@
 import { createContext } from "react";
-import type { ListContextType } from "../types/ListTypes";
+import type { ListContextType } from "../types/ListTypes.ts";
 
-export const ListContext = createContext<ListContextType | undefined>(
-  undefined
-);
+export const ListContext = createContext<ListContextType | undefined>(undefined);
