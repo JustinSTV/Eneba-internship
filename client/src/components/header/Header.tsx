@@ -9,6 +9,7 @@ import { CiHeart, CiSearch, CiShoppingCart, CiUser } from "react-icons/ci";
 import { IoCloseOutline } from "react-icons/io5";
 
 const HeaderComponent = styled.header`
+  margin-bottom: 24px;
   padding: 12px 0;
   display: flex;
   align-items: center;
@@ -16,6 +17,12 @@ const HeaderComponent = styled.header`
   gap: 24px;
   color: white;
   height: 100px;
+
+  @media (max-width: 768px) {
+    height: auto;
+    padding: 12px 16px;
+    flex-wrap: wrap; /* Allows items to wrap to a new line if needed */
+  }
 `;
 
 const LogoSection = styled.div`
@@ -38,6 +45,12 @@ const SearchArea = styled.div`
   gap: 16px;
   flex: 1;
   justify-content: flex-start;
+
+  @media (max-width: 768px) {
+    order: 3;
+    max-width: none;
+    width: 100%;
+  }
 `;
 
 const SearchWrapper = styled.div`
@@ -100,6 +113,10 @@ const RegionSelector = styled.div`
 
   &:hover {
     opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
 

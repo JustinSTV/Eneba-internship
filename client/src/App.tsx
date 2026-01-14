@@ -12,11 +12,6 @@ const Container = styled.main`
   margin: 0 auto;
   padding: 16px;
 
-  header {
-    text-align: center;
-    margin-bottom: 24px;
-  }
-
   div.card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));

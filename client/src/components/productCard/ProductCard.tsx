@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { CiHeart } from "react-icons/ci";
+import { BsInfoCircle } from "react-icons/bs";
 import type { Game } from "../../types/ListTypes";
 import CardOverlay from "./CardOverlay";
 
@@ -19,6 +20,15 @@ const Card = styled.article`
       height: 100%;
       width: 100%;
       object-fit: cover;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      height: 450px;
+    }
+
+    @media (max-width: 600px) {
+      height: 400px;
     }
   }
   div.card-body {
@@ -68,6 +78,9 @@ const Card = styled.article`
         font-weight: 800;
         font-size: 1.75rem;
         color: #ffffff;
+        display: flex;
+        align-items: center;
+        gap: 6px;
       }
     }
   }
@@ -121,6 +134,7 @@ const ProductCard = ({ game }: { game: Game }) => {
           <div className="discounted">
             {gameCurrency}
             {game.price.toFixed(2)}
+            <BsInfoCircle size={20} color="rgba(255, 255, 255, 0.5)" />
           </div>
         </div>
         <div className="card-footer">
