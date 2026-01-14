@@ -5,7 +5,7 @@ let client;
 let dbInstance;
 export let gamesCollection;
 
-const CONNECT_URL = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_CLUSTER}.${process.env.DB_CLUSTER_ID}.mongodb.net/`;
+const CONNECT_URL = process.env.MONGODB_URI;
 
 export const connectToDatabase = async () => {
   if (!client) {
