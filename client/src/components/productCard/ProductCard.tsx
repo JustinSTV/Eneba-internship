@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { CiHeart } from "react-icons/ci";
 import type { Game } from "../../types/ListTypes";
+import CardOverlay from "./CardOverlay";
 
 const Card = styled.article`
   background-color: rgb(31, 10, 77);
@@ -11,6 +12,7 @@ const Card = styled.article`
   flex-direction: column;
 
   div.card-image {
+    position: relative;
     height: 400px;
     overflow: hidden;
     img {
@@ -97,6 +99,7 @@ const ProductCard = ({ game }: { game: Game }) => {
     <Card>
       <div className="card-image">
         <img src={game.image_url} alt={game.title} />
+        <CardOverlay game={game} />
       </div>
       <div className="card-body">
         <h2>

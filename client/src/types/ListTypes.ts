@@ -7,7 +7,7 @@ export type ListContextType = {
 export type Game = {
   _id?: string | number;
   title: string;
-  platform?: string;
+  platform: string;
   region?: string;
   price: number;
   currency?: string;
