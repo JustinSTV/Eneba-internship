@@ -9,9 +9,7 @@ const CONNECT_URL = process.env.MONGODB_URI;
 
 export const connectToDatabase = async () => {
   if (!client) {
-    client = new MongoClient(CONNECT_URL, {
-      connectTimeoutMS: 3000,
-    });
+    client = new MongoClient(CONNECT_URL);
   }
   try {
     await client.connect();

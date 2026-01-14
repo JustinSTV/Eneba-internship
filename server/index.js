@@ -11,11 +11,19 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use(async (req, res, next) => {
+  try {
+    await connectToDatabase();
+    next();
+  } catch (err) {
+    res.status(500).json({ error: "Database connection failed" });
+  }
+});
+
 app.use("/api/list", listRoute);
 
 const startServer = async () => {
   try {
-    await connectToDatabase();
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });
