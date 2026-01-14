@@ -13,8 +13,10 @@ export const ListProvider = ({ children }: ChildProps) => {
       dispatch({ type: "GET_LIST_START" });
 
       const res = await fetch("/api/list");
+      console.log("Fetch response status:", res);
 
       const data = await res.json();
+      console.log("Fetched data:", data);
 
       dispatch({ type: "GET_LIST_SUCCESS", payload: data });
 

@@ -11,30 +11,21 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/list", listRoute);
+app.use("/api/list", listRoute);
 
-// const startServer = async () => {
-//   try {
-//     await connectToDatabase();
-//     app.listen(PORT, () => {
-//       console.log(`Server is running on port ${PORT}`);
-//     });
-//   } catch (error) {
-//     console.error("Failed to connect to database", error);
-//     process.exit(1);
-//   }
-// };
+const startServer = async () => {
+  try {
+    await connectToDatabase();
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error("Failed to connect to database", error);
+    process.exit(1);
+  }
+};
 
 
-// startServer();
-
-connectToDatabase().catch(err => console.error("Database connection error:", err));
-
-if (process.env.NODE_ENV !== "production") {
-  const PORT = process.env.SERVER_PORT || 5501;
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-  });
-}
+startServer();
 
 export default app;
